@@ -1,9 +1,10 @@
 package pack;
+
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -12,17 +13,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 //import java.awt.*;
 
 public class Gui {
-//      Stage stage;
+    //      Stage stage;
     VBox layout;
     private Scene scene;
     TextArea textField, output;
     Button button;
-
+    String[] outString;
 
     public VBox getLayout() {
         return layout;
@@ -72,12 +74,20 @@ public class Gui {
 
         button = new Button("Scan");
         button.setFont(Font.font("verdana", FontWeight.MEDIUM, 30));
-        button.setOnAction(e -> {
+        button.setOnAction((ActionEvent event) -> {
             output.clear();
-            output.setText(Scanner.getToken2(textField.getText()));
-            System.out.println("input: " + textField.getText());
+            outString = Scanner.getToken2(textField.getText()).split(",");
+            System.out.println(outString);
+            for (int i = 0; i < outString.length; i += 2) {
+                output.appendText(outString[i]);
+                output.appendText("                             ");
+                output.appendText(outString[i + 1]);
+                output.appendText("\n");
+            }
+//            output.setText();
+//            System.out.println("input: " + textField.getText());
 //            output.setText("kosom hayaty");
-            System.out.println("out: " + Scanner.getToken2(textField.getText()));
+//            System.out.println("out: " + Scanner.getToken2(textField.getText()));
         });
         button.setMinSize(100, 100);
 //        output.setText(Scanner.getToken2("int int Then int Then := = + - / * > < ( ) ; ** "));

@@ -1,4 +1,5 @@
 package pack;
+
 import java.io.FileNotFoundException;
 import java.util.Collection;
 
@@ -10,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class main extends Application{
+public class main extends Application {
 
     Gui gui = new Gui();
 

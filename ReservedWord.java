@@ -1,4 +1,5 @@
 package pack;
+
 public enum ReservedWord {
-    If , then, end, repeat, until, read, write
+    If, Else,then, end, repeat, until, read, write
 }
